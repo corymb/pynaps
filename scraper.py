@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from collections import Counter
+
 from bs4 import BeautifulSoup
 
 
@@ -16,7 +18,8 @@ def parse_naps(data=data):
     return [dict(zip(["naps", "time", "crs", "tipster", "spread"],
         e)) for e in clean_rows if len(e) == 5]
 
-naps = parse_naps()
+entries = parse_naps()
 
 # Nap functions:
-get_top_x = lambda x: naps[:x]
+get_top_x = lambda x: entries[:x]
+get_most_tipped = Counter([entry['naps'] for entry in entries])
