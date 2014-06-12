@@ -27,3 +27,5 @@ get_integer = lambda(tip): tip['spread'][1:]
 # Nap functions:
 get_top_x = lambda x: entries[:x]
 get_most_tipped = Counter([entry['naps'] for entry in entries])
+get_positive_tippers = filter(lambda(tip): tip if is_positive(tip) else None,
+        entries)
