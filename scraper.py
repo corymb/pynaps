@@ -16,4 +16,7 @@ def parse_naps(data=data):
     return [dict(zip(["naps", "time", "crs", "tipster", "spread"],
         e)) for e in clean_rows if len(e) == 5]
 
-parse_naps()
+naps = parse_naps()
+
+# Nap functions:
+get_top_x = lambda x: naps[:x]
