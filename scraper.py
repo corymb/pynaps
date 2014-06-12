@@ -20,6 +20,10 @@ def parse_naps(data=data):
 
 entries = parse_naps()
 
+# Helper functions:
+is_positive = lambda(tip): True if tip['spread'][0] == '+' else False
+get_integer = lambda(tip): tip['spread'][1:]
+
 # Nap functions:
 get_top_x = lambda x: entries[:x]
 get_most_tipped = Counter([entry['naps'] for entry in entries])
