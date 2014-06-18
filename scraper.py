@@ -39,5 +39,5 @@ hottest_tips = ['%s@%s' % (x, aggregate_spreads(x)) for x, y in get_most_tipped.
 get_positive_tippers = filter(lambda(tip): tip if is_positive(tip) else None,
                 entries)
 
-if hottest_tips:
-    print hottest_tips
+for tip in hottest_tips:
+    print tip
