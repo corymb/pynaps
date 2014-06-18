@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 DEBUG = True
 
 if DEBUG:
-    input_source = 'test_nap.html'
+    input_source = 'test_nap.html1'
     with open(input_source, 'r') as page:
         data = page.read()
 else:
@@ -32,5 +32,14 @@ get_integer = lambda(tip): tip['spread'][1:]
 # Nap functions:
 get_top_x = lambda x: entries[:x]
 get_most_tipped = Counter([entry['naps'] for entry in entries])
+get_most_tipped_spread = lambda x: [float(entry['spread']) for entry in entries]
+aggregate_spreads = lambda x: sum([float(y['spread']) for y in entries if y['naps'] == x])
+hottest_tips = ['%s@%s' % (x, aggregate_spreads(x)) for x, y in get_most_tipped.items() 
+        if y > 1 if aggregate_spreads(x) > 0]
 get_positive_tippers = filter(lambda(tip): tip if is_positive(tip) else None,
-        entries)
+                entries)
+
+if hottest_tips:
+    print hottest_tips
+
+
