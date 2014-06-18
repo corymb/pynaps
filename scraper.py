@@ -32,7 +32,7 @@ get_integer = lambda(tip): tip['spread'][1:]
 # Nap functions:
 get_top_x = lambda x: entries[:x]
 get_most_tipped = Counter([entry['name'] for entry in entries])
-get_most_tipped_spread = lambda x: [float(entry['spread']) for entry in entries]
+get_most_tipped_spread = lambda: [float(entry['spread']) for entry in entries]
 aggregate_spreads = lambda x: sum([float(y['spread']) for y in entries if y['name'] == x])
 hottest_tips = ['%s@%s' % (x, aggregate_spreads(x)) for x, y in get_most_tipped.items()
         if y > 1 if aggregate_spreads(x) > 0]
